@@ -9,16 +9,16 @@ const domStringBuilder = () => {
   domString += '<div class="row">';
   movies.forEach((movie) => {
     domString += '<div class="col-3">';
-    domString += `<div class="card" id="${movie.id}">`;
+    domString += `<div class="card movie-card" id="${movie.id}">`;
     domString += '<div class="card-body">';
-    domString += `<h3 class="card-title">${movie.name}</h3>`;
+    domString += `<h3 class="card-title movie-card-title title-card title">${movie.name}</h3>`;
     domString += `<p class="card-text">Genre: ${movie.genre}</p>`;
     domString += `<p class="card-text">Release Date: ${movie.releaseDate}</p>`;
     domString += `<p class="card-text">${movie.description}</p>`;
     domString += `<p class="card-text">${movie.locations.length}</p>`;
     domString += '</div>';
-  domString += '</div>';
-domString += '</div>';
+    domString += '</div>';
+    domString += '</div>';
   });
   domString += '</div>';
   util.printToDom('movies', domString);
