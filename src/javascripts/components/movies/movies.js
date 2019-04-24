@@ -16,6 +16,7 @@ const domStringBuilder = () => {
     domString += `<p class="card-text">Release Date: ${movie.releaseDate}</p>`;
     domString += `<p class="card-text">${movie.description}</p>`;
     domString += `<p class="card-text">${movie.locations.length}</p>`;
+    domString += `<button class="movie-btn btn btn-secondary" id="${movie.id}Btn">View Details</button>`;
     domString += '</div>';
     domString += '</div>';
     domString += '</div>';
