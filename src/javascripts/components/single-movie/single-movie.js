@@ -1,8 +1,7 @@
 import util from '../../helpers/utils';
 
-const movieButtons = Array.from(document.getElementsByClassName('movie-btn'));
-
 const movieBtnListener = () => {
+  const movieButtons = Array.from(document.getElementsByClassName('movie-btn'));
   movieButtons.forEach((button) => {
     button.addEventListener('click', (e) => {
       e.preventDefault();

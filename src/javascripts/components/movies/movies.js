@@ -1,4 +1,5 @@
 import moviesData from '../../helpers/data/movies-data';
+import singleMovie from '../single-movie/single-movie';
 import util from '../../helpers/utils';
 import './movies.scss';
 
@@ -31,6 +32,7 @@ const initializeMovies = () => {
       const movieResults = response.data.movies;
       movies = movieResults;
       domStringBuilder();
+      singleMovie.movieBtnListener();
     })
     .catch(error => console.error(error));
 };
