@@ -1,35 +1,65 @@
+import locationsData from '../../helpers/data/locations-data';
 import moviesData from '../../helpers/data/movies-data';
-import util from '../../helpers/utils';
+import domStringBuilders from '../../helpers/dom-string-builders';
+import locations from '../locations/locations';
 import './movies.scss';
 
 let movies = [];
+let newLocations = [];
+let singleMovie = '';
 
-const domStringBuilder = () => {
-  let domString = '';
-  domString += '<div class="row">';
-  movies.forEach((movie) => {
-    domString += '<div class="col-3">';
-    domString += `<div class="card movie-card" id="${movie.id}">`;
-    domString += '<div class="card-body">';
-    domString += `<h3 class="card-title movie-card-title title-card title">${movie.name}</h3>`;
-    domString += `<p class="card-text">Genre: ${movie.genre}</p>`;
-    domString += `<p class="card-text">Release Date: ${movie.releaseDate}</p>`;
-    domString += `<p class="card-text">${movie.description}</p>`;
-    domString += `<p class="card-text">${movie.locations.length}</p>`;
-    domString += '</div>';
-    domString += '</div>';
-    domString += '</div>';
-  });
-  domString += '</div>';
-  util.printToDom('movies', domString);
+const filterMoviesArray = (e) => {
+  [singleMovie] = movies.filter(m => e.target.id.includes(m.id));
 };
+
+const getLocations = () => {
+  locationsData.getLocationsData()
+    .then((response) => {
+      const locationResults = response.data.locations;
+      newLocations = locationResults;
+      const singleMovieLocations = singleMovie.locations.map((movieLocation) => {
+        const [sml] = newLocations.filter(l => movieLocation === l.id);
+        return sml;
+      });
+      locations.domStringBuilder(singleMovieLocations, 'singleMovieLocations');
+    })
+    .catch(error => console.error(error));
+};
+
+const backBtnListener = (listenerFunction, arrayToBuild) => {
+  document.getElementById('backBtn').addEventListener('click', () => {
+    document.getElementById('singleMovieView').classList.add('hide');
+    document.getElementById('homeView').classList.remove('hide');
+    domStringBuilders.domStringBuilder(arrayToBuild);
+    listenerFunction();
+    locations.initializeLocations();
+  });
+};
+
+const movieBtnListener = (arrayToBuild) => {
+  const movieButtons = Array.from(document.getElementsByClassName('movie-btn'));
+  movieButtons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('homeView').classList.add('hide');
+      document.getElementById('singleMovieView').classList.remove('hide');
+      filterMoviesArray(e);
+
+      domStringBuilders.singleMovieBuilder(singleMovie);
+      getLocations();
+      backBtnListener(movieBtnListener, arrayToBuild);
+    });
+  });
+};
+
 
 const initializeMovies = () => {
   moviesData.getMoviesData()
     .then((response) => {
       const movieResults = response.data.movies;
       movies = movieResults;
-      domStringBuilder();
+      domStringBuilders.domStringBuilder(movies);
+      movieBtnListener(movies);
     })
     .catch(error => console.error(error));
 };
