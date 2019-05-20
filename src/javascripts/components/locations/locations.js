@@ -26,7 +26,7 @@ const shootTimeClass = (shootTime) => {
   return selectedClass;
 };
 
-const domStringBuilder = (arrayToPrint) => {
+const domStringBuilder = (arrayToPrint, divId) => {
   let domString = '';
   domString += '<div class="row">';
   arrayToPrint.forEach((location) => {
@@ -43,7 +43,7 @@ const domStringBuilder = (arrayToPrint) => {
     domString += '</div>';
   });
   domString += '</div>';
-  util.printToDom('locations', domString);
+  util.printToDom(divId, domString);
 };
 
 const locationButtonFilter = (e) => {
@@ -86,11 +86,12 @@ const initializeLocations = () => {
     .then((response) => {
       const locationResults = response.data.locations;
       locations = locationResults;
-      domStringBuilder(locations);
+      domStringBuilder(locations, 'locations');
       locationFilterButtons.forEach((button) => {
         button.addEventListener('click', locationButtonFilter);
       });
       document.getElementById('searchInput').addEventListener('keyup', filterLocationsByText);
+      return locations;
     })
     .catch(error => console.error(error));
 };

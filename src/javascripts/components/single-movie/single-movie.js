@@ -1,32 +1,20 @@
-import movieData from '../../helpers/data/movies-data';
-import util from '../../helpers/utils';
-let movies = [];
-let singleMovies = [];
+// import domStringBuilder from '../../helpers/dom-string-builders';
+// import movieData from '../../helpers/data/movies-data';
+// // import util from '../../helpers/utils';
 
-const movieBtnListener = () => {
-  const movieButtons = Array.from(document.getElementsByClassName('movie-btn'));
-  movieButtons.forEach((button) => {
-    button.addEventListener('click', (e) => {
-      e.preventDefault();
-      util.printToDom('app', e.target.id);
-    });
-  });
-};
+// let movies = [];
+// // let singleMovie = '';
+// const initializeSingleMovie = () => {
+// movieData.getMoviesData()
+// .then((response) => {
+// moviesArray = response.data.movies;
+// movies = moviesArray;
+// // filterMoviesArray(e);
+// // domStringBuilder.singleMovieBuilder(singleMovie);
 
-const filterMoviesArray = (e) => {
-singleMovie = movies.filter(m => e.target.id.includes(m.id));
-};
+// })
+// };
 
-const initializeSingleMovie = () => {
-movieData.getMoviesData()
-.then((response) => {
-moviesArray = response.data.movies;
-movies = moviesArray;
-})
-};
-
-export default {
-  movieBtnListener,
-};
-
-
+// export default {
+//   movieBtnListener,
+// };
