@@ -1,5 +1,9 @@
+// module creates two string builder functions for use in movies.js
 import util from './utils';
 
+/* function builds HTML string of a bootstrap jumbotron and extra div
+To contain information extracted from movie object passed in as parameter
+Uses util.js print function to display string to page */
 const singleMovieBuilder = (movie) => {
   let domString = '';
   domString += `<div class="container" id="${movie.id}Container">`;
@@ -18,6 +22,9 @@ const singleMovieBuilder = (movie) => {
   util.printToDom('singleMovieView', domString);
 };
 
+/* function builds HTML string of bootstrap cards within a bootstrap row div
+to display information about each movie extracted from each object in the array
+Uses print function from util.js to display final string to "movies" div */
 const domStringBuilder = (arrayToPrint) => {
   let domString = '';
   domString += '<div class="row">';
