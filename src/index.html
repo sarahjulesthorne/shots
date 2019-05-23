@@ -10,16 +10,30 @@
 
 <body>
   <div id="app">
+
+    <!-- Div for holding single movie when selected -->
     <div class="hide" id="singleMovieView"></div>
+
+    <!-- Div for holding view seen on page load and when Back To Movies is clicked -->
     <div id="homeView">
     <h2>Movies</h2>
+
+    <!-- Div for holding movie cards -->
     <div id="movies"></div>
+
     <h2>Locations</h2>
+
+    <!-- Start of div for holding location sorting controls -->
     <div id="filters">
+
+      <!-- Row 1: holds search input -->
       <div class="row">
         <label for="searchInput">Enter Search</label>
         <input class="" type="text" id="searchInput" placeholder="Enter Search Term Here">
       </div>
+      <!-- End of row 1 -->
+
+      <!-- Row 2: holds sorting buttons -->
       <div class="row">
 <button class="btn location-btn btn-outline-dark all-btn" id="all">All</button>
 <button class="btn location-btn btn-secondary morning-btn" id="morning">Morning</button>
@@ -27,10 +41,15 @@
 <button class="btn location-btn btn-info evening-btn" id="evening">Evening</button>
 <button class="btn location-btn btn-danger dark-btn" id="dark">After Dark</button>
       </div>
-
+<!-- End of row 2 -->
     </div>
+    <!-- End of location sorting form div -->
+
+    <!-- Div for holding locations cards -->
     <div id="locations"></div>
 </div>  
+<!-- End of home view -->
+
   </div>
 </body>
 

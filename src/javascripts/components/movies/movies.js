@@ -2,8 +2,8 @@ import locationsData from '../../helpers/data/locations-data';
 import moviesData from '../../helpers/data/movies-data';
 import domStringBuilders from '../../helpers/dom-string-builders';
 import locations from '../locations/locations';
-import './movies.scss';
 
+// initialized variables for use in module
 let movies = [];
 let newLocations = [];
 let singleMovie = '';
@@ -30,9 +30,9 @@ const backBtnListener = (listenerFunction, arrayToBuild) => {
   document.getElementById('backBtn').addEventListener('click', () => {
     document.getElementById('singleMovieView').classList.add('hide');
     document.getElementById('homeView').classList.remove('hide');
-    domStringBuilders.domStringBuilder(arrayToBuild);
-    listenerFunction();
-    locations.initializeLocations();
+    // domStringBuilders.domStringBuilder(arrayToBuild);
+    // listenerFunction();
+    // locations.initializeLocations();
   });
 };
 
@@ -44,7 +44,6 @@ const movieBtnListener = (arrayToBuild) => {
       document.getElementById('homeView').classList.add('hide');
       document.getElementById('singleMovieView').classList.remove('hide');
       filterMoviesArray(e);
-
       domStringBuilders.singleMovieBuilder(singleMovie);
       getLocations();
       backBtnListener(movieBtnListener, arrayToBuild);
