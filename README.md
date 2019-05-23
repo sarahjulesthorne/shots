@@ -8,8 +8,8 @@ I had to problem solve some circular dependency issues between modules.
 I also solved some issues regarding calling functions before they were initialized, but I later refactored that problem/solution out of my project.  
 Styling is not gorgeous for the home view, but was the part we did in class/with teachers, so less essential as part of my personal assignment.  
 ## Screenshots  
-![]()  
-![]()  
+![Screenshot of page on load displaying all movie cards, location filtering controls, and all location cards](https://raw.githubusercontent.com/sarahjulesthorne/shots/master/src/assets/images/full-page.png "Screenshot of page on load displaying all movie cards, location filtering controls, and all location cards")  
+![Screenshot of sample single movie view with jumbotron displaying movie details and that movie's location cards](https://raw.githubusercontent.com/sarahjulesthorne/shots/master/src/assets/images/single-movie.png "Screenshot of sample single movie view with jumbotron displaying movie details and that movie's location cards")  
 ## Installation Instructions  
 * Clone down this repo  
 * At the root of the project, run `npm install`  
